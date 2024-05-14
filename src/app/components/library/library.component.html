@@ -1,0 +1,108 @@
+
+<div class="m-3 p-3" style="margin-top: 80px;">
+  <div class="d-flex">
+    <h1 class="head m-3 p-3">My Libraries</h1>
+    <button class="button mt-4" (click)="logout()" style="margin-left:70%;">
+      <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></svg>
+           LogOut
+  </button>
+  </div>
+  
+  <div class="library m-3 p-3" *ngIf="libraries.length!=0">
+    <table class="table table-bordered border-primary">
+      <thead>
+        <tr>
+          <th scope="col">ItemId</th>
+          <th scope="col">Id</th>
+          <th scope="col">BookName</th>
+          <th scope="col">AuthorName</th>
+          <th scope="col">Category</th>
+          <th scope="col">Image</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of libraries;let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td>{{book._id}}</td>
+          <td>{{book.bookName}}</td>
+          <td>{{book.authorName}}</td>
+          <td>{{book.category}}</td>
+          <td><img [src]=book.image alt="" style="width:100px;height: 150px;"></td>
+          <td class="d-flex">
+            <button class="btn" (click)="libraryDecrement(book.id)">-</button>
+            <input type="text" [value]="book.quantity" readonly class="form-control w-25">
+            <button class="btn" (click)="libraryIncrement(book.id)">+</button>
+          </td>
+          <td>{{book.price}}</td>
+          <td><button class="btn btn-dark text-danger" matTooltip="DELETE" matTooltipPosition="above" (click)="deleteLibrary(book.id)">DELETE</button></td>
+        </tr> 
+       
+      </tbody>
+    </table>
+  </div>
+  <div class="billing m-5 p-5">
+      <!-- billing -->
+      <div class="card" style="width: 400px;height: 400px;margin-left: 500px;">
+        <div class="svgContainer">
+          <svg class="svg-icon dartboard" viewBox="0 0 20 20">
+            <path d="M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10 M17.969,10c0,4.401-3.567,7.969-7.969,7.969c-4.402,0-7.969-3.567-7.969-7.969c0-4.402,3.567-7.969,7.969-7.969C14.401,2.031,17.969,5.598,17.969,10 M17.13,10c0-3.932-3.198-7.13-7.13-7.13S2.87,6.068,2.87,10c0,3.933,3.198,7.13,7.13,7.13S17.13,13.933,17.13,10"></path>
+          </svg>
+          
+          <svg class="svg-icon eyehole" viewBox="0 0 20 20">
+            <path d="M17.659,9.597h-1.224c-0.199-3.235-2.797-5.833-6.032-6.033V2.341c0-0.222-0.182-0.403-0.403-0.403S9.597,2.119,9.597,2.341v1.223c-3.235,0.2-5.833,2.798-6.033,6.033H2.341c-0.222,0-0.403,0.182-0.403,0.403s0.182,0.403,0.403,0.403h1.223c0.2,3.235,2.798,5.833,6.033,6.032v1.224c0,0.222,0.182,0.403,0.403,0.403s0.403-0.182,0.403-0.403v-1.224c3.235-0.199,5.833-2.797,6.032-6.032h1.224c0.222,0,0.403-0.182,0.403-0.403S17.881,9.597,17.659,9.597 M14.435,10.403h1.193c-0.198,2.791-2.434,5.026-5.225,5.225v-1.193c0-0.222-0.182-0.403-0.403-0.403s-0.403,0.182-0.403,0.403v1.193c-2.792-0.198-5.027-2.434-5.224-5.225h1.193c0.222,0,0.403-0.182,0.403-0.403S5.787,9.597,5.565,9.597H4.373C4.57,6.805,6.805,4.57,9.597,4.373v1.193c0,0.222,0.182,0.403,0.403,0.403s0.403-0.182,0.403-0.403V4.373c2.791,0.197,5.026,2.433,5.225,5.224h-1.193c-0.222,0-0.403,0.182-0.403,0.403S14.213,10.403,14.435,10.403"></path>
+          </svg>
+          <svg class="svg-icon batman">
+            <path class="svg-fill-primary" d="M86.578,41.004s-8.219,.295-8.607,7.685c0,0-9.824-4.379-11.571,7.874,0,0-8.653-5.402-14.586,9.744l-1.861-3.908-1.861,3.908c-5.933-15.146-14.586-9.744-14.586-9.744-1.752-12.253-11.571-7.874-11.571-7.874-.366-6.927-7.609-7.621-8.514-7.68,11.643,.442,15.904-7.314,15.904-7.314,3.015,13.499,14.097,14.603,14.097,14.603l2.43-9.335,1.461,4.379h5.28l1.457-4.379,2.43,9.335s11.087-1.103,14.102-14.603c0,0,4.282,7.798,15.996,7.31Z">
+          </path>
+          </svg>
+          
+        
+        </div>
+        <div class="card-info">
+          <span>Payment</span>
+          <p>Total: ${{totalPrice}}</p>
+          <button class="challengeButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">CheckOut</button>
+        </div>
+        </div>
+  </div>
+  <!-- <div class="text-center m-5 p-5" *ngIf="libraries.length==0">
+    <img src="https://cdn.vectorstock.com/i/preview-1x/50/71/an-empty-thick-book-vector-1315071.jpg" alt="" style="width: 900px;height: 300px;">
+    <h3 class="m-4"><b>Your Library was empty</b></h3>
+    <button class="btn btn-success" routerLink="/all-books">Add More</button>
+  </div> -->
+</div>
+
+
+
+<!-- modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">CheckOut Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-center">Enter Your Details</h4>
+        <input type="text" id="form1Example1" class="form-control mb-3" name="name" placeholder="Enter Your Name" />
+        <input type="text" id="form1Example2" class="form-control mb-3" placeholder="Enter Your PhoneNumber"/>
+        <input type="text" id="form1Example3" class="form-control mb-3" placeholder="Enter Your Address" />
+        <h4 class="text-center">Total: ${{totalPrice}}</h4>
+        <div *ngIf="paymentStatus">
+          <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="makePayment()">Payment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  

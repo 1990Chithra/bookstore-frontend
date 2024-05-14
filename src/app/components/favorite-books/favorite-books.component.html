@@ -1,0 +1,40 @@
+
+<div class="container mt-5 mb-5" *ngIf="favoritesArray.length!=0">
+  <h1 class="head m-3 p-3">My Favorites</h1>
+  <table class="table table-bordered border-primary">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">BookName</th>
+        <th scope="col">AuthorName</th>
+        <th scope="col">Category</th>
+        <th scope="col">Image</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of favoritesArray;let i=index">
+        <td>{{book._id}}</td>
+        <td>{{book.bookName}}</td>
+        <td>{{book.authorName}}</td>
+        <td>{{book.category}}</td>
+        <td><img [src]=book.image alt="" style="width:100px;height150px;"></td>
+        <td>
+        <button class="btn btn-dark text-danger ms-3 me-3" matTooltip="DELETE" matTooltipPosition="above" (click)="deleteFavoriteBook(book.id)">DELETE</button>
+        <button class="btn btn-dark text-warning" matTooltip="READ" matTooltipPosition="above" routerLink="/user/pdf"  (click)="addToPdf(book)">READ</button>
+        </td>
+      </tr>     
+    </tbody>
+  </table>
+</div>
+<!-- <div class="text-center m-5 p-5" *ngIf="favoritesArray.length==0">
+  <img src="https://www.shutterstock.com/image-vector/no-heart-outline-icon-remove-260nw-2237614625.jpg" alt="">
+  <h3 class="m-4"><b>Your Favorites was empty</b></h3>
+  <button class="btn btn-success" routerLink="/all-books">Add More</button>
+</div> -->
+
+
+
+
+
+  

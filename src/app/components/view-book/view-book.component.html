@@ -1,0 +1,49 @@
+<main>
+    <div class="card">
+      <div class="card__title">
+        <div class="icon">
+          <a routerLink="allBooks"><i class="fa fa-arrow-left"></i></a>
+        </div>
+        <h1>Our books</h1>
+      </div>
+      <div class="card__body">
+        <div class="half">
+          <div class="featured_text">
+            <h2>Name:{{book.bookName}}</h2>
+            <p>Id:{{book.id}}</p>
+            <p class="sub">AuthorName:{{book.authorName}}</p>
+            <p class="category">Category:{{book.category}}</p>
+            <p class="price mt-3">Price:${{book.price}}</p>
+            <p class="ratings mt-3">Ratings:{{book.rating.rate}}</p>
+          </div>
+          <div class="image">
+            <img [src]=book.image alt="" height="300px">
+          </div>
+        </div>
+        <div class="half">
+          <div class="description">
+            <p>{{book.description}}</p>
+          </div>
+          <!-- <span class="stock"><i class="fa fa-pen"></i> In stock</span> -->
+          <!-- <div class="reviews">
+            <ul class="stars">
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star-o"></i></li>
+            </ul>
+            <span>(64 reviews)</span>
+          </div> -->
+        </div>
+      </div>
+      <div class="card__footer justify-content-evenly">       
+        <div class="action">
+          <button mat-raised-button matTooltip="addToLibrary" matTooltipPosition="above" (click)="addToLibrary(book)">Add to library</button>
+        </div>
+        <div class="action">
+            <button mat-raised-button matTooltip="addToFavorites" matTooltipPosition="above" (click)="addToFavorites()">Add to favorite</button>
+          </div>
+      </div>
+    </div>
+  </main>

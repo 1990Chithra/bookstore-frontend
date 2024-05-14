@@ -1,0 +1,57 @@
+   
+<div>
+    <img src="https://img.freepik.com/premium-vector/gradient-world-book-day-horizontal-banner_23-2149320552.jpg?w=1060" alt="" style="width:100%;">
+</div>
+<div  class="row m-3 p-3 justify-content-evenly">
+    <div class="d-flex justify-content-evenly">
+        <div class="col-8 mt-3">
+            <input type="search" class="form-control rounded w-75" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
+        </div>
+        <div class="col-3 mt-3">
+            <button mat-raised-button [matMenuTriggerFor]="menu" matTooltip="Sort" matTooltipPosition="above" style="background-color:black;color: white;">Sort</button>
+            <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="sortbyId()">Sord by Id</button>
+            <button mat-menu-item (click)="sortbyName()">Sort by Book Name</button>
+            </mat-menu>
+        </div>
+
+    </div>
+    <h1 class="head m-3 p-3">New Arrivals</h1>
+    <hr>
+
+    <div class="card mt-5"  *ngFor="let book of allBooks">
+        <div class="card__image">
+            <img [src]=book.image alt="">
+        </div>
+        <div class="card__content">
+            <p class="card__title">{{book.bookName}}</p>
+            <p class="card__text">{{book.authorName}}</p>
+            <a class="card__button" routerLink="/view/{{book._id}}">QUICK VIEW</a>
+        </div>
+   </div>
+</div>   
+
+<div class="m-3 p-3">
+    <h1 class="head">Our Sellers</h1>
+    <hr>
+</div>
+<div class="row mb-5 pb-5 d-flex justify-content-evenly">
+    <div class="col-3 shadow m-3 p-3">
+        <h3 style="font-weight: 500;color: blue;">Best sellers</h3>
+        <p>A bestseller is a book or other media noted for its top selling status, with bestseller lists published by newspapers, magazines, and book store chains. Some lists are broken down into classifications and specialties (novel, nonfiction book, cookbook, etc.). An author may also be referred to as a bestseller if their work often appears in a list. Well-known bestseller lists in the U.S. are published by Publishers Weekly, USA Today, The New York Times, and IndieBound.[1] The New York Times tracks book sales from national and independent bookstores, as well as sales from major internet retailers such as Amazon.com and Barnes & Noble.</p>
+    </div>
+    <div class="col-3 shadow m-3 p-3">
+        <h3 style="font-weight: 500;color: blue;">Boby Books</h3>
+        <p>Bob Books, written by Bobby Lynn Maslen and illustrated by John R. Maslen, are a series of children’s books designed to teach reading skills acquisition. With a foundation in phonics methods, each level addresses a single stage in a child’s reading development.The first Bob Books were individually hand-drawn for Bobby Lynn Maslen's students. When it became too cumbersome to make books for each child, she persuaded the school to print 300 copies. This eventually led to more sets, a cottage industry and self publishing.
+
+            The Bob Books became a Children’s Book of the Month Club selection and the series was adopted by home-schoolers and Montessori teachers. In 1993 USA Today ran a story about the Bob Books.[1] “By that time we knew the potential was much more than we could handle ourselves.”[2] Scholastic Inc. became their publisher in 1994.</p>
+    </div>
+    <div class="col-3 shadow m-3 p-3">
+        <h3 style="font-weight: 500;color: blue;">Real Books</h3>
+        <p>The Real Book is a musicians' fake book – a compilation of lead sheets for jazz standards. Fake books had been around at least since the late 1920s, but their organization was haphazard, and their content did not always keep pace with contemporary musical styles. The Real Book was initially produced by two students at the Berklee College of Music in the 1970s, as an updated fake book.[1] It became so popular that the book was eventually "legitimized" by publisher Hal Leonard, and re-released in a series of editions and transpositions for various instruments.</p>
+    </div>
+
+
+</div>
+        
+  

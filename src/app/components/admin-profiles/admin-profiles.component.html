@@ -1,0 +1,27 @@
+
+<div class="container m-3 p-3" >
+  <div>
+    <h1 class="text-primary" style="font-weight: 600px;">User List</h1>
+  </div>
+  <hr>
+   <div class="m-3 p-3">
+    <table class="table table-secondary table-striped-columns">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nUsers of allUsers ">
+        <td>{{nUsers._id}}</td>
+        <td>{{nUsers.username}}</td>
+        <td>{{nUsers.email}}</td>
+        <td>{{nUsers.password}}</td>       
+      </tr>     
+    </tbody>
+    </table>
+   </div>
+  </div>

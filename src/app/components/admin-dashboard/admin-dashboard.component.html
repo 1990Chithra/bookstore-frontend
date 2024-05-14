@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row m-3 p-3">
+    <div class="col">
+      <h2 class="text-primary" style="font-size: 25px;font-weight: 600px;">Admin Dashboard</h2>
+    </div>
+    <div class="col col-lg-2">
+      <button mat-raised-button matTooltip="userlist" matTooltipPosition="above" routerLink="/admin/profiles" style="background-color: black;color:yellow;">UserList</button>      
+    </div>
+    <div class="col col-lg-2">
+      <button mat-raised-button [matMenuTriggerFor]="menu" matTooltip="Sort" matTooltipPosition="above" style="background-color:black;color: white;">Sort</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="sortbyId()">Sord by Id</button>
+        <button mat-menu-item (click)="sortbyName()">Sort by Book Name</button>
+      </mat-menu>
+    </div>
+    <div class="col col-lg-2">
+      <button mat-raised-button matTooltip="export pdf" matTooltipPosition="above" (click)="generatepdf()" style="background-color:black;color:skyblue">Export</button>
+    </div>
+    <div class="col col-lg-2">
+      <button mat-raised-button matTooltip="add" matTooltipPosition="above" routerLink="/admin/add" style="background-color: black;color:palegreen">Add</button>      
+    </div>
+    <div class="col col-lg-2">
+      <button class="button" (click)="logout()">
+        <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></svg>
+       LogOut
+     </button>
+    </div>
+  </div>
+</div>
+<hr>
+<p class="m-3 text-end fw-bolder">Logged At:{{adminLoggedStatus | date:'medium'}}</p>
+<div class="row m-3 p-3" >
+  <table class="table table-secondary table-striped-columns">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">AuthorName</th>
+      <th scope="col">AuthorName</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of allBooks |  paginate: { itemsPerPage: 5, currentPage: p }">
+      <td>{{book.id}}</td>
+      <td>{{book.bookName}}</td>
+      <td>{{book.authorName}}</td>
+      <td>{{book.category}}</td>
+      <td>{{book.price}}</td>
+      <td>
+        <i class="fa-solid fa-trash ms-3 text-danger" (click)="deleteBook(book.id)"></i>
+      </td>
+    </tr>    
+  </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+</div>

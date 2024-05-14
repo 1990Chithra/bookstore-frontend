@@ -1,0 +1,67 @@
+<div class="m-5 p-5" style="margin-top: 80px;">
+        <form style="width: 26rem;margin-left:40%;" [formGroup]="addForm">
+            <!-- Name input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input formControlName="id" type="text" id="form4Example1" class="form-control" placeholder="Enter Book Id"/>
+              <div *ngIf="this.addForm.get('Id')?.errors && this.addForm.get('id')?.touched" class="text-danger fw-bolder">*Invalid Id</div>
+
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input formControlName="bookName" type="text" id="form4Example2" class="form-control" placeholder="Enter Book Name"/>
+              <div *ngIf="this.addForm.get('bookName')?.errors && this.addForm.get('bookName')?.touched" class="text-danger fw-bolder">*Invalid bookName</div>
+
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input formControlName="authorName" type="text" id="form4Example3" class="form-control" placeholder="Enter Author Name"/>
+                <div *ngIf="this.addForm.get('authorName')?.errors && this.addForm.get('authorName')?.touched" class="text-danger fw-bolder">*Invalid authorName</div>
+
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input formControlName="image" type="text" id="form4Example4" class="form-control" placeholder="Enter Image url"/>
+                <div *ngIf="this.addForm.get('image')?.errors && this.addForm.get('image')?.touched" class="text-danger fw-bolder">*Invalid image</div>
+
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input formControlName="category" type="text" id="form4Example5" class="form-control" placeholder="Enter Category"/>
+                <div *ngIf="this.addForm.get('category')?.errors && this.addForm.get('category')?.touched" class="text-danger fw-bolder">*Invalid category</div>
+
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input formControlName="price" type="text" id="form4Example6" class="form-control" placeholder="Enter Book Price"/>
+                <div *ngIf="this.addForm.get('price')?.errors && this.addForm.get('price')?.touched" class="text-danger fw-bolder">*Invalid price</div>
+
+            </div>
+             <!-- Message input -->
+             <div data-mdb-input-init class="form-outline mb-4">
+                <textarea formControlName="description" class="form-control" id="form4Example7" rows="4" placeholder="Enter the Book Description"></textarea>
+                <div *ngIf="this.addForm.get('description')?.errors && this.addForm.get('description')?.touched" class="text-danger fw-bolder">*Invalid description</div>
+
+              </div>
+            <div class="row mb-4">
+                <label class="form-label" for="form4Example">Enter the Book ratings</label>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input formControlName="rate" type="text" id="form3Example8" class="form-control" placeholder="Enter Book rate" />
+                    <div *ngIf="this.addForm.get('rate')?.errors && this.addForm.get('rate')?.touched" class="text-danger fw-bolder">*Invalid rate</div>
+
+                  </div>
+                </div>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input formControlName="count" type="text" id="form3Example9" class="form-control" placeholder="Enter Book count" />
+                    <div *ngIf="this.addForm.get('count')?.errors && this.addForm.get('count')?.touched" class="text-danger fw-bolder">*Invalid count</div>
+
+                  </div>
+                </div>
+              </div>  
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input formControlName="pdfUrl" type="text" id="form4Example4" class="form-control" placeholder="Enter pdfUrl"/>
+                <div *ngIf="this.addForm.get('pdfUrl')?.errors && this.addForm.get('pdfUrl')?.touched" class="text-danger fw-bolder">*Invalid pdfUrl</div>
+
+            </div>
+            <!-- Submit button -->
+            <div class="text-center">
+                <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4" (click)="addBook()">Submit</button>
+            </div>
+          </form>
+</div>
